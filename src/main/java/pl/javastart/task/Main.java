@@ -1,5 +1,10 @@
 package pl.javastart.task;
 
+import pl.javastart.task.podatki.NaCzarno;
+import pl.javastart.task.podatki.PodatekLiniowy;
+import pl.javastart.task.podatki.WedlugSkaliPodatkowej;
+import pl.javastart.task.podatki.RyczaltEwidencjonowany;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -13,9 +18,20 @@ public class Main {
         Firma janNowakServices = new Firma("Jan Nowak IT Services", new RyczaltEwidencjonowany());
 
         janNowakServices.dodajPrzychod("Programowanie", 15_000);
-        janNowakServices.dodajWydatek("Energetyki", 200);
+        janNowakServices.dodajWydatek("Energetyki", 2000);
 
         janNowakServices.wyswietlPodsumowanie();
-    }
 
+        Firma janosik = new Firma("Transport", new WedlugSkaliPodatkowej());
+        janosik.dodajPrzychod("Transport", 150_000);
+        janosik.dodajWydatek("Paliwo", 20_000);
+
+        janosik.wyswietlPodsumowanie();
+
+        Firma kowal = new Firma("Kowal", new PodatekLiniowy());
+        kowal.dodajPrzychod("jakaś usługa", 200_000);
+        kowal.dodajWydatek("Paliwo", 10_000);
+
+        kowal.wyswietlPodsumowanie();
+    }
 }
