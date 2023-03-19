@@ -1,17 +1,17 @@
 package pl.javastart.task;
 
-import pl.javastart.task.Operacje.Wydatki;
-import pl.javastart.task.Podatki.FormaOpodatkowania;
-import pl.javastart.task.Operacje.Przychody;
-import pl.javastart.task.Operacje.Transakcje;
+import pl.javastart.task.podatki.FormaOpodatkowania;
+import pl.javastart.task.operacje.Transakcja;
 
 public class Firma {
 
     private final int iloscOperacji = 1000;
     private String nazwa;
-    private final Transakcje[] transakcje = new Transakcje[iloscOperacji];
+    private final Transakcja[] przychody = new Transakcja[iloscOperacji];
+    private final Transakcja[] wydatki = new Transakcja[iloscOperacji];
     private FormaOpodatkowania formaOpodatkowania;
-    private int licznikTransakcji = 0;
+    private int licznikPrzychodow = 0;
+    private int licznikWydatkow = 0;
 
     public Firma(String nazwa, FormaOpodatkowania formaOpodatkowania) {
         this.nazwa = nazwa;
@@ -31,31 +31,27 @@ public class Firma {
 
     private double zsumujWydatki() {
         double sumaWydatkow = 0;
-        for (int i = 0; i < licznikTransakcji; i++) {
-            if (transakcje[i] instanceof Wydatki) {
-                sumaWydatkow += transakcje[i].getKwota();
-            }
+        for (int i = 0; i < licznikWydatkow; i++) {
+            sumaWydatkow += wydatki[i].getKwota();
         }
         return sumaWydatkow;
     }
 
     private double zsumujPrzychody() {
         double sumaPrzychodow = 0;
-        for (int i = 0; i < licznikTransakcji; i++) {
-            if (transakcje[i] instanceof Przychody) {
-                sumaPrzychodow += transakcje[i].getKwota();
-            }
+        for (int i = 0; i < licznikPrzychodow; i++) {
+            sumaPrzychodow += przychody[i].getKwota();
         }
         return sumaPrzychodow;
     }
 
     public void dodajPrzychod(String nazwa, double wartosc) {
-        transakcje[licznikTransakcji] = new Przychody(nazwa, wartosc);
-        licznikTransakcji++;
+        przychody[licznikPrzychodow] = new Transakcja(nazwa, wartosc);
+        licznikPrzychodow++;
     }
 
     public void dodajWydatek(String nazwa, double wartosc) {
-        transakcje[licznikTransakcji] = new Wydatki(nazwa, wartosc);
-        licznikTransakcji++;
+        wydatki[licznikWydatkow] = new Transakcja(nazwa, wartosc);
+        licznikWydatkow++;
     }
 }

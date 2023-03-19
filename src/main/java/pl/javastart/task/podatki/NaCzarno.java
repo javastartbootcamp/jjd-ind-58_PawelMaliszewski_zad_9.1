@@ -1,4 +1,4 @@
-package pl.javastart.task.Podatki;
+package pl.javastart.task.podatki;
 
 public class NaCzarno extends FormaOpodatkowania {
 

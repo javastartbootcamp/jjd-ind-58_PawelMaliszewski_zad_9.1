@@ -1,10 +1,10 @@
-package pl.javastart.task.Operacje;
+package pl.javastart.task.operacje;
 
-public class Transakcje {
+public class Transakcja {
     private String nazwa;
     private double kwota;
 
-    public Transakcje(String nazwa, double kwota) {
+    public Transakcja(String nazwa, double kwota) {
         this.nazwa = nazwa;
         this.kwota = kwota;
     }

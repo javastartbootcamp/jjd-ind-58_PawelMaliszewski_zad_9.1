@@ -1,9 +1,9 @@
 package pl.javastart.task;
 
-import pl.javastart.task.Podatki.NaCzarno;
-import pl.javastart.task.Podatki.PodatekLiniowy;
-import pl.javastart.task.Podatki.WedlugSkaliPodatkowej;
-import pl.javastart.task.Podatki.RyczaltEwidencjonowany;
+import pl.javastart.task.podatki.NaCzarno;
+import pl.javastart.task.podatki.PodatekLiniowy;
+import pl.javastart.task.podatki.WedlugSkaliPodatkowej;
+import pl.javastart.task.podatki.RyczaltEwidencjonowany;
 
 public class Main {
 
