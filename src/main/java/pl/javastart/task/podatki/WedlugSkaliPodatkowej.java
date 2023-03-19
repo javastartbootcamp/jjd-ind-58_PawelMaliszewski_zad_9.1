@@ -10,20 +10,15 @@ public class WedlugSkaliPodatkowej extends FormaOpodatkowania {
         return podatek(przychody, koszty);
     }
 
-    protected double podatek(double przchod, double koszty) {
-        double kwota = 0;
-        double przychodPoOdlicznieuKosztow = przychodPoOdliczniuKosztow(przchod, koszty);
-        if (przchod <= PROG_PODATKOWY) {
-            if (przychodPoOdlicznieuKosztow > KWOTA_WOLNA_OD_PODATKU && przychodPoOdlicznieuKosztow <= PROG_PODATKOWY) {
-                kwota = (przychodPoOdlicznieuKosztow - KWOTA_WOLNA_OD_PODATKU) * PODATEK_18_PROCENT;
-            } else if (przychodPoOdlicznieuKosztow > 0 && przychodPoOdlicznieuKosztow < KWOTA_WOLNA_OD_PODATKU) {
-                kwota = 0;
-            }
-        } else if (przychodPoOdlicznieuKosztow > PROG_PODATKOWY) {
-            kwota = (PROG_PODATKOWY - KWOTA_WOLNA_OD_PODATKU) * PODATEK_18_PROCENT
-                    + (przychodPoOdlicznieuKosztow - PROG_PODATKOWY) * PODATEK_32_PROCENT;
+    protected double podatek(double przychod, double koszty) {
+        double przychodPoOdlicznieuKosztow = przychodPoOdliczniuKosztow(przychod, koszty);
+        if (przychodPoOdlicznieuKosztow <= KWOTA_WOLNA_OD_PODATKU) {
+            return 0;
+        } else if (przychodPoOdlicznieuKosztow <= PROG_PODATKOWY) {
+            return (przychodPoOdlicznieuKosztow - KWOTA_WOLNA_OD_PODATKU) * PODATEK_18_PROCENT;
         }
-        return kwota;
+        return (PROG_PODATKOWY - KWOTA_WOLNA_OD_PODATKU) * PODATEK_18_PROCENT
+                    + (przychodPoOdlicznieuKosztow - PROG_PODATKOWY) * PODATEK_32_PROCENT;
     }
 
     @Override

@@ -33,6 +33,5 @@ public class Main {
         kowal.dodajWydatek("Paliwo", 10_000);
 
         kowal.wyswietlPodsumowanie();
-
     }
 }
